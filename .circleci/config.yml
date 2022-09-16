@@ -7,10 +7,6 @@ executors:
       GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"'
     docker:
       - image: cimg/openjdk:17.0.0
-  machine-executor:
-    working_directory: ~/micrometer-observation-spring-boot
-    machine:
-      image: ubuntu-2004:202107-02
 
 commands:
   gradlew-build:
@@ -50,12 +46,6 @@ jobs:
     steps:
       - gradlew-build
 
-  docker-tests:
-    executor: machine-executor
-    steps:
-      - gradlew-build:
-          command: dockerTest
-
   deploy:
     executor: circle-jdk-executor
     steps:
@@ -71,11 +61,9 @@ workflows:
   build_prs_deploy_snapshots:
     jobs:
       - build
-      - docker-tests
       - deploy:
           requires:
             - build
-            - docker-tests
           filters:
             branches:
               only:
@@ -89,16 +77,9 @@ workflows:
               ignore: /.*/
             tags:
               only: /^v\d+\.\d+\.\d+(-(RC|M)\d+)?$/
-      - docker-tests:
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /^v\d+\.\d+\.\d+(-(RC|M)\d+)?$/
       - deploy:
           requires:
             - build
-            - docker-tests
           filters:
             tags:
               only: /^v\d+\.\d+\.\d+(-(RC|M)\d+)?$/
