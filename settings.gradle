@@ -22,4 +22,4 @@ gradleEnterprise {
 	server = 'https://ge.micrometer.io'
 }
 
-include 'micrometer-observation-spring-boot-autoconfigure', 'micrometer-observation-spring-boot-dependencies'
+include 'micrometer-observation-spring-boot-autoconfigure'
