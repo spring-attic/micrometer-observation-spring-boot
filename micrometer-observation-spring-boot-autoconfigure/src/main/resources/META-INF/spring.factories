@@ -1,0 +1,2 @@
+org.springframework.boot.env.EnvironmentPostProcessor=\
+io.micrometer.spring.actuate.autoconfigure.tracing.TracingEnvironmentPostProcessor
