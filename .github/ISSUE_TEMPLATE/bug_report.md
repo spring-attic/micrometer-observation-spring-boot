@@ -1,5 +1,5 @@
 ---
-name: Bug report about: Report a bug in Micrometer Tracing title: ''
+name: Bug report about: Report a bug in Micrometer Observation Spring Boot title: ''
 labels: bug assignees: ''
 
 ---
@@ -10,7 +10,7 @@ A clear and concise description of what the bug is.
 **Environment**
 <!-- In what environment did the bug happen? -->
 
-- Micrometer Tracing version [e.g. 1.7.1]
+- Micrometer Observation Spring Boot version [e.g. 1.7.1]
 - OS: [e.g. macOS]
 - Java version: [e.g. output of `java -version`]
 

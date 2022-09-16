@@ -1,11 +1,11 @@
 ---
-name: Enhancement request about: Request an enhancement for Micrometer title: ''
+name: Enhancement request about: Request an enhancement for Micrometer Observation Spring Boot title: ''
 labels: enhancement assignees: ''
 
 ---
 
 **Please describe the feature request.**
-A clear and concise description of what you would like to be able to do with Micrometer Tracing and cannot currently.
+A clear and concise description of what you would like to be able to do with Micrometer Observation Spring Boot and cannot currently.
 
 **Rationale**
 Please help us understand the rationale (why) behind the enhancement request.
