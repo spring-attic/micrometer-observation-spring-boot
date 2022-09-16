@@ -37,7 +37,7 @@ production use.
 
 ## Contributing
 
-See our [Contributing Guide](CONTRIBUTING.md) for information about contributing to Micrometer Tracing.
+See our [Contributing Guide](CONTRIBUTING.md) for information about contributing to Micrometer Observation Spring Boot.
 
 -------------------------------------
 _Licensed under [Apache Software License 2.0](https://www.apache.org/licenses/LICENSE-2.0)_

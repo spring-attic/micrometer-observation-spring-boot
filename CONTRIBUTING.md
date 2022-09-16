@@ -1,9 +1,9 @@
 # Contributing Guide
 
-This Contributing Guide is intended for those that would like to contribute to Micrometer Tracing.
+This Contributing Guide is intended for those that would like to contribute to Micrometer Observation Spring Boot.
 
-If you would like to use any of the published Micrometer Tracing modules as a library in your project, you can instead
-include the Micrometer Tracing artifacts from the Maven Central repository using your build tool of choice.
+If you would like to use any of the published Micrometer Observation Spring Boot modules as a library in your project, you can instead
+include the Micrometer Observation Spring Boot artifacts from the Maven Central repository using your build tool of choice.
 
 ## Code of Conduct
 
@@ -11,18 +11,18 @@ See [our Contributor Code of Conduct](https://github.com/micrometer-metrics/.git
 
 ## Contributions
 
-Contributions come in various forms and are not limited to code changes. The Micrometer Tracing community benefits from
+Contributions come in various forms and are not limited to code changes. The Micrometer Observation Spring Boot community benefits from
 contributions in all forms.
 
-For example, those with Micrometer Tracing knowledge and experience can contribute by:
+For example, those with Micrometer knowledge and experience can contribute by:
 
 * TODO: [Contributing documentation]()
-* Answering [Stackoverflow questions](https://stackoverflow.com/tags/micrometer-tracing)
+* Answering [Stackoverflow questions](https://stackoverflow.com/tags/micrometer)
 * Answering questions on the [Micrometer slack](https://slack.micrometer.io)
-* Share Micrometer Tracing knowledge in other ways (e.g. presentations, blogs)
+* Share Micrometer knowledge in other ways (e.g. presentations, blogs)
 
 The remainder of this document will focus on guidance for contributing code changes. It will help contributors to build,
-modify, or test the Micrometer Tracing source code.
+modify, or test the Micrometer Observation Spring Boot source code.
 
 ## Contributor License Agreement
 
@@ -31,7 +31,7 @@ the [Contributor License Agreement](https://cla.pivotal.io/sign/pivotal) if you 
 
 ## Getting the source
 
-The Micrometer Tracing source code is hosted on GitHub at https://github.com/micrometer-metrics/tracing. You can use a
+Micrometer Observation Spring Boot source code is hosted on GitHub at https://github.com/spring-projects-experimental/micrometer-observation-spring-boot. You can use a
 Git client to clone the source code to your local machine.
 
 ## Building
