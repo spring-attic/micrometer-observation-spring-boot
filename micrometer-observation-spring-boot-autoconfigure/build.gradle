@@ -12,6 +12,7 @@ dependencies {
 
 	optionalApi("io.micrometer:micrometer-observation")
 	optionalApi("io.micrometer:micrometer-core")
+	optionalApi("io.micrometer:micrometer-registry-prometheus")
 	optionalApi("io.micrometer:micrometer-tracing")
 	optionalApi("io.micrometer:micrometer-tracing-bridge-brave")
 	optionalApi("io.zipkin.aws:brave-propagation-aws")
