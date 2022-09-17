@@ -52,6 +52,7 @@ subprojects {
 			}
 			PLATFORM_VERSIONS.each {
 				implementation platform(it)
+				annotationProcessor platform(it)
 			}
 		}
 	}
