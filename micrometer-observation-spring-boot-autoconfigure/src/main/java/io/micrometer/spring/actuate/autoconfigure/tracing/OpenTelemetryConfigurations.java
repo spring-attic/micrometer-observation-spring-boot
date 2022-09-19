@@ -32,6 +32,7 @@ import io.micrometer.tracing.otel.bridge.OtelBaggageManager;
 import io.micrometer.tracing.otel.bridge.OtelCurrentTraceContext;
 import io.micrometer.tracing.otel.bridge.OtelHttpClientHandler;
 import io.micrometer.tracing.otel.bridge.OtelHttpServerHandler;
+import io.micrometer.tracing.otel.bridge.OtelPropagator;
 import io.micrometer.tracing.otel.bridge.OtelTracer;
 import io.micrometer.tracing.otel.bridge.OtelTracer.EventPublisher;
 import io.micrometer.tracing.otel.bridge.Slf4JBaggageEventListener;
@@ -159,8 +160,14 @@ class OpenTelemetryConfigurations {
 
 		@Bean
 		@ConditionalOnMissingBean
-		EventPublisher otelTracerEventPublisher(TracingProperties tracingProperties,
-				List<EventListener> eventListeners) {
+		@ConditionalOnBean({ Tracer.class, ContextPropagators.class })
+		OtelPropagator otelPropagator(ContextPropagators contextPropagators, Tracer tracer) {
+			return new OtelPropagator(contextPropagators, tracer);
+		}
+
+		@Bean
+		@ConditionalOnMissingBean
+		EventPublisher otelTracerEventPublisher(List<EventListener> eventListeners) {
 			return new OTelEventPublisher(eventListeners);
 		}
 

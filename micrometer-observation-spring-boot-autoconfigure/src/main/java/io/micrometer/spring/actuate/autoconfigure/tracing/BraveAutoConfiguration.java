@@ -53,6 +53,7 @@ import io.micrometer.tracing.brave.bridge.BraveBaggageManager;
 import io.micrometer.tracing.brave.bridge.BraveCurrentTraceContext;
 import io.micrometer.tracing.brave.bridge.BraveHttpClientHandler;
 import io.micrometer.tracing.brave.bridge.BraveHttpServerHandler;
+import io.micrometer.tracing.brave.bridge.BravePropagator;
 import io.micrometer.tracing.brave.bridge.BraveTracer;
 import io.micrometer.tracing.brave.bridge.W3CPropagation;
 import org.slf4j.MDC;
@@ -183,6 +184,12 @@ public class BraveAutoConfiguration {
 		@ConditionalOnMissingBean
 		BraveTracer braveTracerBridge(brave.Tracer tracer, CurrentTraceContext currentTraceContext) {
 			return new BraveTracer(tracer, new BraveCurrentTraceContext(currentTraceContext), BRAVE_BAGGAGE_MANAGER);
+		}
+
+		@Bean
+		@ConditionalOnMissingBean
+		BravePropagator bravePropagator(Tracing tracing) {
+			return new BravePropagator(tracing);
 		}
 
 		@Bean

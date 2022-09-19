@@ -31,12 +31,12 @@ import brave.sampler.Sampler;
 import io.micrometer.tracing.brave.bridge.BraveBaggageManager;
 import io.micrometer.tracing.brave.bridge.BraveHttpClientHandler;
 import io.micrometer.tracing.brave.bridge.BraveHttpServerHandler;
+import io.micrometer.tracing.brave.bridge.BravePropagator;
 import io.micrometer.tracing.brave.bridge.BraveTracer;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.Answers;
 
-import org.springframework.boot.actuate.autoconfigure.tracing.BraveAutoConfiguration;
 import org.springframework.boot.autoconfigure.AutoConfigurations;
 import org.springframework.boot.test.context.FilteredClassLoader;
 import org.springframework.boot.test.context.runner.ApplicationContextRunner;
@@ -47,8 +47,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 
 /**
- * Tests for
- * {@link org.springframework.boot.actuate.autoconfigure.tracing.BraveAutoConfiguration}.
+ * Tests for {@link BraveAutoConfiguration}.
  *
  * @author Moritz Halbritter
  */
@@ -99,6 +98,7 @@ class BraveAutoConfigurationTests {
 			assertThat(context).hasSingleBean(BraveTracer.class);
 			assertThat(context).hasSingleBean(BraveHttpServerHandler.class);
 			assertThat(context).hasSingleBean(BraveHttpClientHandler.class);
+			assertThat(context).hasSingleBean(BravePropagator.class);
 		});
 	}
 
@@ -132,12 +132,13 @@ class BraveAutoConfigurationTests {
 
 	@Test
 	void shouldNotSupplyMicrometerBeansIfMicrometerIsMissing() {
-		this.contextRunner.withClassLoader(new FilteredClassLoader("io.micrometer")).run((context) -> {
-			assertThat(context).doesNotHaveBean(BraveTracer.class);
-			assertThat(context).doesNotHaveBean(BraveBaggageManager.class);
-			assertThat(context).doesNotHaveBean(BraveHttpServerHandler.class);
-			assertThat(context).doesNotHaveBean(BraveHttpClientHandler.class);
-		});
+		this.contextRunner.withClassLoader(new FilteredClassLoader("io.micrometer.core", "io.micrometer.tracing"))
+				.run((context) -> {
+					assertThat(context).doesNotHaveBean(BraveTracer.class);
+					assertThat(context).doesNotHaveBean(BraveBaggageManager.class);
+					assertThat(context).doesNotHaveBean(BraveHttpServerHandler.class);
+					assertThat(context).doesNotHaveBean(BraveHttpClientHandler.class);
+				});
 	}
 
 	@Test
