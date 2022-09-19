@@ -38,7 +38,7 @@ import org.springframework.context.annotation.Bean;
  * @since 3.0.0
  */
 @AutoConfiguration(before = PrometheusMetricsExportAutoConfiguration.class)
-@ConditionalOnClass(SpanContextSupplier.class)
+@ConditionalOnClass({ Tracer.class, SpanContextSupplier.class })
 @ConditionalOnEnabledTracing
 public class ExemplarsAutoConfiguration {
 

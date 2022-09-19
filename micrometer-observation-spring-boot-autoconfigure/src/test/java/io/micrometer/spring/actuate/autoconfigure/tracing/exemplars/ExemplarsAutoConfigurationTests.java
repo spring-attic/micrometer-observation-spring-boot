@@ -65,6 +65,12 @@ public class ExemplarsAutoConfigurationTests {
 	}
 
 	@Test
+	void shouldNotSupplyBeansIfMicrometerTracingIsMissing() {
+		this.contextRunner.withClassLoader(new FilteredClassLoader("io.micrometer.tracing"))
+				.run((context) -> assertThat(context).doesNotHaveBean(SpanContextSupplier.class));
+	}
+
+	@Test
 	void shouldSupplyCustomBeans() {
 		this.contextRunner.withUserConfiguration(CustomConfiguration.class)
 				.run((context) -> assertThat(context).hasSingleBean(SpanContextSupplier.class)
