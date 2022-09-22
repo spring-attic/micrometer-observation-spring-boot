@@ -14,38 +14,47 @@
  * limitations under the License.
  */
 
-package org.springframework.boot.actuate.autoconfigure.observation;
+package io.micrometer.spring.actuate.autoconfigure.observation;
 
+import io.micrometer.core.instrument.MeterRegistry;
+import io.micrometer.core.instrument.observation.DefaultMeterObservationHandler;
+import io.micrometer.core.instrument.observation.MeterObservationHandler;
+import io.micrometer.observation.Observation;
 import io.micrometer.observation.ObservationRegistry;
-import io.micrometer.tracing.handler.TracingObservationHandler;
+import io.micrometer.tracing.Tracer;
+import io.micrometer.tracing.handler.TracingAwareMeterObservationHandler;
 
 import org.springframework.boot.actuate.autoconfigure.metrics.CompositeMeterRegistryAutoConfiguration;
+import org.springframework.boot.actuate.autoconfigure.tracing.MicrometerTracingAutoConfiguration;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 
 /**
  * {@link EnableAutoConfiguration Auto-configuration} for the Micrometer Observation API.
  *
  * @author Moritz Halbritter
+ * @author Jonatan Ivanov
  * @since 3.0.0
  */
-@AutoConfiguration(after = CompositeMeterRegistryAutoConfiguration.class, before = ObservationAutoConfiguration.class)
+@AutoConfiguration(after = { CompositeMeterRegistryAutoConfiguration.class, MicrometerTracingAutoConfiguration.class })
 @ConditionalOnClass(ObservationRegistry.class)
-public class TracingObservationAutoConfiguration {
+public class ObservationAutoConfiguration {
 
 	@Configuration(proxyBeanMethods = false)
-	@ConditionalOnClass(TracingObservationHandler.class)
-	static class TracingConfiguration {
+	@ConditionalOnBean(Tracer.class)
+	static class MetricsWithTracingConfiguration {
 
-		// TODO: If moved back the name was tracingObservationHandlerGrouping
 		@Bean
-		@Primary // TODO: Should be removed when tracing removed from Boot
-		TracingObservationHandlerGrouping micrometerTracingObservationHandlerGrouping() {
-			return new TracingObservationHandlerGrouping();
+		@ConditionalOnMissingBean(MeterObservationHandler.class)
+		@ConditionalOnBean(MeterRegistry.class)
+		TracingAwareMeterObservationHandler<Observation.Context> tracingAwareMeterObservationHandler(
+				MeterRegistry meterRegistry, Tracer tracer) {
+			return new TracingAwareMeterObservationHandler<>(new DefaultMeterObservationHandler(meterRegistry), tracer);
 		}
 
 	}

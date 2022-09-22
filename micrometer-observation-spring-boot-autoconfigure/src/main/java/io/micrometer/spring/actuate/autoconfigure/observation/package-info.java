@@ -15,6 +15,6 @@
  */
 
 /**
- * Auto-configuration for Micrometer Tracing.
+ * Auto-configuration for Micrometer Observation.
  */
-package org.springframework.boot.actuate.autoconfigure.observation;
+package io.micrometer.spring.actuate.autoconfigure.observation;
