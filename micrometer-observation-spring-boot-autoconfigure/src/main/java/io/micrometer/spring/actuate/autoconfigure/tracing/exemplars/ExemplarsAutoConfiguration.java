@@ -30,6 +30,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 
+// TODO: Delete this once this PR is merged: https://github.com/spring-projects/spring-boot/pull/32415
 /**
  * {@link EnableAutoConfiguration Auto-configuration} for Prometheus Exemplars with
  * Micrometer Tracing.

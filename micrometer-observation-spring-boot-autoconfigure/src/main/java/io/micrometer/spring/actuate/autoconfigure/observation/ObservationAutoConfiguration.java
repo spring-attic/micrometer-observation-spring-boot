@@ -34,6 +34,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+// TODO: Delete this once this PR is merged: https://github.com/spring-projects/spring-boot/pull/32399
 /**
  * {@link EnableAutoConfiguration Auto-configuration} for the Micrometer Observation API.
  *
