@@ -3,33 +3,22 @@ plugins {
 }
 
 dependencies {
-	annotationProcessor "org.springframework.boot:spring-boot-autoconfigure-processor"
+	annotationProcessor 'org.springframework.boot:spring-boot-autoconfigure-processor'
 
-	optionalApi "org.springframework.boot:spring-boot-autoconfigure-processor"
-	implementation "org.springframework.boot:spring-boot-autoconfigure"
-	implementation "org.springframework.boot:spring-boot-actuator-autoconfigure"
+	optionalApi 'org.springframework.boot:spring-boot-autoconfigure-processor'
+	implementation 'org.springframework.boot:spring-boot-autoconfigure'
+	implementation 'org.springframework.boot:spring-boot-actuator-autoconfigure'
 	implementation 'io.micrometer:micrometer-observation'
 
-	optionalApi("io.micrometer:micrometer-observation")
-	optionalApi("io.micrometer:micrometer-core")
-	optionalApi("io.micrometer:micrometer-registry-prometheus")
-	optionalApi("io.micrometer:micrometer-tracing")
-	optionalApi("io.micrometer:micrometer-tracing-bridge-brave")
-	optionalApi("io.zipkin.aws:brave-propagation-aws")
-	optionalApi("io.micrometer:micrometer-tracing-bridge-otel")
-	optionalApi("io.micrometer:micrometer-tracing-reporter-wavefront")
-	optionalApi("io.zipkin.reporter2:zipkin-sender-urlconnection")
-	optionalApi("io.opentelemetry:opentelemetry-exporter-zipkin")
-	optionalApi("io.micrometer:micrometer-registry-wavefront")
-	optionalApi("org.springframework:spring-web")
-	optionalApi("org.springframework:spring-webflux")
+	optionalApi 'io.micrometer:micrometer-registry-prometheus'
+	optionalApi 'io.micrometer:micrometer-tracing'
 
 	// log monitoring
 	optionalApi 'ch.qos.logback:logback-classic'
 
-	testImplementation "org.springframework.boot:spring-boot-starter-test"
-	testImplementation "org.springframework.boot:spring-boot-actuator-autoconfigure"
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.boot:spring-boot-actuator-autoconfigure'
+	testImplementation 'io.micrometer:micrometer-tracing-bridge-brave'
     testImplementation 'org.awaitility:awaitility'
-	testImplementation("com.squareup.okhttp3:mockwebserver")
+	testImplementation 'com.squareup.okhttp3:mockwebserver'
 }
-

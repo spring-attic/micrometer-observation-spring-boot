@@ -1,7 +1,2 @@
 io.micrometer.spring.actuate.autoconfigure.observation.ObservationAutoConfiguration
-io.micrometer.spring.actuate.autoconfigure.tracing.BraveAutoConfiguration
-io.micrometer.spring.actuate.autoconfigure.tracing.MicrometerTracingAutoConfiguration
-io.micrometer.spring.actuate.autoconfigure.tracing.OpenTelemetryAutoConfiguration
 io.micrometer.spring.actuate.autoconfigure.tracing.exemplars.ExemplarsAutoConfiguration
-io.micrometer.spring.actuate.autoconfigure.tracing.wavefront.WavefrontTracingAutoConfiguration
-io.micrometer.spring.actuate.autoconfigure.tracing.zipkin.ZipkinAutoConfiguration
