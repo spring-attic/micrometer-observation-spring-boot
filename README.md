@@ -1,3 +1,6 @@
+# This repository is no longer actively maintained by VMware, Inc.
+
+
 # Micrometer Observation Spring Boot
 
 [![Build Status](https://circleci.com/gh/spring-projects-experimental/micrometer-observation-spring-boot.svg?style=shield)](https://circleci.com/gh/spring-projects-experimental/micrometer-observation-spring-boot)
